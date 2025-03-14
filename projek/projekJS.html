@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projek kek shopee</title>
+    <style>
+        body {
+            margin: 20px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <h1>Cafe Cart Quantity</h1>
+    <section class="coffee">
+        <ol>
+            <li class="coffee">
+                <p>Coffee</p> 
+                <button onclick="tampil_isiKeranjang('coffee')">Show Cart Quantity</button>
+                <button onclick="updateCart('coffee', -3)">-3</button>
+                <button onclick="updateCart('coffee', -2)">-2</button>
+                <button onclick="updateCart('coffee', -1)">-1</button>
+                <button onclick="updateCart('coffee', 1)">Add to Cart</button>
+                <button onclick="updateCart('coffee', 2)">+2</button>
+                <button onclick="updateCart('coffee', 3)">+3</button>
+                <button onclick="resetCart('coffee')">Reset Cart</button>
+                <button onclick="buyItem('coffee')">BUY</button>
+            </li>
+            
+            <li class="bagel">
+                <p>Bagel</p>
+                <button onclick="tampil_isiKeranjang('bagel')">Show Cart Quantity</button>
+                <button onclick="updateCart('bagel', -3)">-3</button>
+                <button onclick="updateCart('bagel', -2)">-2</button>
+                <button onclick="updateCart('bagel', -1)">-1</button>
+                <button onclick="updateCart('bagel', 1)">Add to Cart</button>
+                <button onclick="updateCart('bagel', 2)">+2</button>
+                <button onclick="updateCart('bagel', 3)">+3</button>
+                <button onclick="resetCart('bagel')">Reset Cart</button>
+                <button onclick="buyItem('bagel')">BUY</button>
+            </li>
+            
+            <li class="soup">
+                <p>Soup</p>
+                <button onclick="tampil_isiKeranjang('soup')">Show Cart Quantity</button>
+                <button onclick="updateCart('soup', -3)">-3</button>
+                <button onclick="updateCart('soup', -2)">-2</button>
+                <button onclick="updateCart('soup', -1)">-1</button>
+                <button onclick="updateCart('soup', 1)">Add to Cart</button>
+                <button onclick="updateCart('soup', 2)">+2</button>
+                <button onclick="updateCart('soup', 3)">+3</button>
+                <button onclick="resetCart('soup')">Reset Cart</button>
+                <button onclick="buyItem('soup')">BUY</button>
+            </li>
+        </ol>
+
+        <p console.log=" ">COFFEE = </p>
+    </section> 
+
+    <script>
+        let keranjang = { 
+            coffee: 0,
+            bagel: 0,
+            soup: 0
+        };
+        
+        const harga = {
+            coffee: 5,
+            bagel: 3,
+            soup: 9
+        };
+
+        function tampil_isiKeranjang(item) { //item mempresentasikan coffee , bagel, atau soup
+            alert(`Keranjang ${item}: ${keranjang[item]}`);
+        }
+
+        function updateCart(item, jumlah) {
+            if (keranjang[item] + jumlah < 0) {
+                alert(`Item di Keranjang ${item} sudah kosong. Tidak bisa dikurangi`);
+            } else {
+                keranjang[item] += jumlah;
+                alert(`Keranjang ${item}: ${keranjang[item]}`);
+            }
+        }
+
+        function resetCart(item) {
+            keranjang[item] = 0;
+            alert(`Keranjang ${item} telah direset.`);
+        }
+
+        function buyItem(item) {
+            if (keranjang[item] === 0) {
+                alert(`Keranjang ${item} masih kosong. Tidak bisa membeli!`);
+            } else {
+                let total = keranjang[item] * harga[item];
+                alert(`Total harga ${item}: $${total}`);
+                
+                //reset setelah membeli
+                keranjang[item] = 0;
+            }
+        }
+    </script>
+</body>
+</html>

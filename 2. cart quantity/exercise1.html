@@ -1,0 +1,121 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart Quantity</title>
+    <style>
+        body {
+            margin: 20px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            margin: 0;
+            padding: 0;
+            /* text-align: center; */
+        }
+    </style>
+</head>
+<body>
+    <h1>Cafe Cart Quantity</h1>
+    <section class = "coffee">
+        <ol>  
+            <li class="coffee">
+               <p>coffee</p>  
+               <button onclick="console.log(`Cart Quantity_coffee: `,cartQuantity_coffee)">Show Cart Quantity</button>
+               
+               <button onclick="cartQuantity_coffee++; 
+                console.log(`Cart Quantity_coffee: `,cartQuantity_coffee)">Add to Cart</button>
+                
+                <button onclick="cartQuantity_coffee += 2; 
+                console.log(`Cart Quantity_coffee: `,cartQuantity_coffee)"
+                >+2</button>
+                
+                <button onclick="cartQuantity_coffee += 3; 
+                console.log(`Cart Quantity_coffee: `,cartQuantity_coffee)"
+                >+3</button>
+                
+                <button onclick="cartQuantity_coffee = 0; 
+                console.log('cart was reset.');
+                console.log(`Cart Quantity_coffee: `,cartQuantity_coffee)" 
+                >Reset Cart</button>
+                
+                <button onclick="harga_coffee = coffee * cartQuantity_coffee;
+                console.log(`harga_coffee: `,harga_coffee)
+                alert(`harga_coffee: $${harga_coffee}`)"
+                >BUY</button>
+            </li>
+
+            <li class= "bagel">
+                <p>bagel </p>  
+            
+                <button onclick="console.log(`Cart Quantity_bagel: `,cartQuantity_bagel)">Show Cart Quantity</button>
+                
+                <button onclick="cartQuantity_bagel++; 
+                console.log(`Cart Quantity_bagel: `,cartQuantity_bagel)"
+                >Add to Cart</button>
+                
+                <button onclick="cartQuantity_bagel += 2; 
+                console.log(`Cart Quantity_bagel: `,cartQuantity_bagel)"
+                >+2</button>
+                
+                <button onclick="cartQuantity_bagel += 3; 
+                console.log(`Cart Quantity_bagel: `,cartQuantity_bagel)"
+                >+3</button>
+                
+                <button onclick="cartQuantity_bagel = 0; 
+                console.log('cart was reset.');
+                console.log(`Cart Quantity_bagel: `,cartQuantity_bagel)"
+                >Reset Cart</button>
+
+                <button onclick="harga_bagel = bagel * cartQuantity_bagel;
+                console.log(`harga_bagel: `,harga_bagel)
+                alert(`harga_bagel: $${harga_bagel}`)"
+                >BUY</button>
+            </li>
+
+            <li class= "soup">
+                <p>soup </p>
+            
+                <button onclick="console.log(`Cart Quantity_soup: `,cartQuantity_soup)">Show Cart Quantity</button>
+                
+                <button onclick="cartQuantity_soup++; 
+                console.log(`Cart Quantity_soup: `,cartQuantity_soup)"
+                >Add to Cart</button>
+                
+                <button onclick="cartQuantity_soup += 2; 
+                console.log(`Cart Quantity_soup: `,cartQuantity_soup)"
+                >+2</button>
+                
+                <button onclick="cartQuantity_soup += 3; 
+                console.log(`Cart Quantity_soup: `,cartQuantity_soup)"
+                >+3</button>
+                
+                <button onclick="cartQuantity_soup = 0; 
+                console.log('cart was reset.');
+                console.log(`Cart Quantity_soup: `,cartQuantity_soup)" 
+                >Reset Cart</button>
+
+                <button onclick="harga_soup = soup * cartQuantity_soup;
+                console.log(`harga_soup: `,harga_soup)
+                alert(`harga_soup: $${harga_soup}`)"
+                >BUY</button>
+            </li>
+        </ol>
+    </section>
+
+    <script>
+        let cartQuantity_coffee = 0;
+        let cartQuantity_bagel = 0;
+        let cartQuantity_soup = 0;
+        const name = "Julian";
+        let coffee = 5;
+        let bagel = 3;
+        let soup = 9;
+        let harga_coffee = 0;
+        let harga_bagel = 0;
+        let harga_soup = 0;
+        harga_coffee = coffee * cartQuantity_coffee;
+    </script>
+</body>
+</html>
