@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latihan convertToCelsius</title>
+    <style>
+        /* latihan container juga */
+        .container {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+        }
+
+        button {
+            /* display: flex; */
+            justify-content: center;
+
+        }
+        span {
+            color: rgb(255, 0, 0);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+
+    <p>convert number & unit </p>
+    <button onclick="convertToCelsius(86,'C')">konversi <span>86F</span> ke celsius</button>
+    <button onclick="convertToFarenheit(25,'F')">konversi <span>25C</span> ke fahrenheit</button>
+    
+    <!-- <p>convert number and a unit</p>
+    <button onclick="convertToCelsius(86)">konversi ke celsius</button>
+    <button onclick="convertToFarenheit(25)">konversi ke fahrenheit</button>
+    -->
+    <script>
+        let celsius = 0;
+        let fahrenheit = 0;
+        const unit={
+            'celsius' : 'C',
+            'fahrenheit' : 'F',
+        }
+    
+        // number & unit
+        function convertToCelsius(fahrenheit,unit) {
+            celsius = (fahrenheit-32)*5/9;
+            console.log(celsius);
+            alert(`Hasil convert : ${celsius}${unit}`);
+        }
+        
+        function convertToFarenheit(celsius,unit) {
+            fahrenheit = (celsius*9/5)+32;
+            console.log(fahrenheit);
+            alert(`Hasil convert : ${fahrenheit}${unit}`);
+        } 
+        
+    </script>
+</body>
+</html>

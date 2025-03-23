@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latihan convertMilesTokm</title>
+    <style>
+        /* latihan container juga */
+        .container {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+        }
+
+        button {
+            /* display: flex; */
+            justify-content: center;
+
+        }
+        span {
+            color: rgb(255, 0, 0);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+
+    <p>convert number & unit </p>
+    <button onclick="convertLength(50,'km','km')"> konversi <span>50 mil</span> ke km</button>
+    
+    
+    <script>
+        let length = 0;
+        let miles = 0;
+        let km = 0;
+        // const unit={
+        //     km : 'kilometer',
+        //     mil : 'miles',
+        // }
+    
+        function convertLength(length, from, to) {
+            if (from === 'miles') {
+                 km = length * 1.6
+                alert(`Hasil convert ${length}${from} : ${km}${to}`);
+
+            }else if (from === 'km' || to === 'km') {
+                alert(`invalid, same unit`); //unitnya sama
+
+            }else if (from === 'miles' || to === 'miles') {
+                alert(`Hasil convert ${length}${from} : ${length}${to}`);
+            }else {
+                miles = length * 0.62
+                alert(`Hasil convert ${length}${from} : ${miles}${to}`);
+            }
+        }
+        
+    </script>
+</body>
+</html>

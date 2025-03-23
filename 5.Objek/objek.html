@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //disini kita belajar
+        //1. object didalam object
+        //2. function didalam object 
+        //3. memanggil
+        //4. menconvert data type
+        //5. built-in object: LOCALSTORAGE
+        //6. Properties & method ( auto boxing)
+        //7. Copy by reference
+        //8. sortcut/hand destructring & method
+        const product ={
+            name: 'shirt',
+            'delivery-time': '1-day', //jadi ini akan menyimpan string 1-day
+            //didalam js kita bisa membuat objek didalam objek karena sama sama value
+            rating : {
+                stars : 4.5,
+                count : 87
+            },
+
+            //function inside object called method
+            fun: function function1() {
+                console.log('function inside object')
+            }
+            //jadi rating terdapat pada objek produk
+            //jika dibaca, product memiliki name, rating(stars, count)
+        };
+
+        console.log(product);
+        console.log(product.name);
+        console.log(product['name']); //braket notation
+        //console.log(product.delivery-time) //js akan membaca delivery - time dan akan eror
+        console.log(product['delivery-time']); //ini untuk memanggil jika terdapat - di subjek
+
+        //panggil rating
+        console.log(product.rating.count);
+        product.fun();
+
+        console.log(typeof console.log);
+        
+        console.log(JSON.stringify(product)); //ini convert produk(objek) ke dalam json
+        
+        const jsonString = JSON.stringify(product);
+        
+        //json.parse dibuat convert json ke dalam objek lagi
+        console.log(JSON.parse(jsonString));
+
+        //next built-in object: LOCALSTORAGE
+        //save value permanent, ga ke reset setelah di refresh
+
+
+        //Properties & method ( auto boxing)
+        console.log('hello'.length);
+        console.log('hello'.toUpperCase());
+
+        console.log(3.5.toString());
+        console.log(true.toString());
+        
+
+        //reference type
+        const object1 = {
+            message : 'hello'
+        };
+        console.log(object1);
+
+        //Copy by reference
+        const object2 = object1;
+
+        //mengubah isi objek1
+        object1.message = 'Good Morning';
+        console.log(object1);
+        console.log(object2); //ini akan menampilkan 'Good Morning'
+                              //kenapa?kan kita pake const..karena object1 dan 2 memiliki refernce yang sama
+        
+        //beda kalau
+        const object3 = {
+            message : 'Good Morning'
+        };
+        //kita bandingkan object1 dan object3
+        console.log(object1 === object3); //false, kenapa? karena object1 dan object3 memiliki referensi yang berbeda
+        console.log(object1 === object2); //true , karena mmeiliki refersni yang sama
+        //jadi kita perlu hati hati jika menggunakan refrensce
+    
+        //Copy by reference
+        //sortcut destructring
+        //saat ingin membuat properti message keluar daro object4
+        const object4 = {
+            message : 'Good Morning',
+            price : 499
+        };
+        //ini cara biasa
+        //const message = object4.message;
+        //cara sorthand
+        const {message, price} = object4;
+        console.log(message);
+        console.log(price);
+
+        const object5 = {
+            message ,
+
+            //methode
+            // method: function function1(){
+            //     console.log('method');
+            // }
+
+            //sorthand methode
+            method() {
+                console.log('methode');
+            }
+        };
+        console.log(object5);
+        object5.method();
+    </script>
+    
+</body>
+</html>
