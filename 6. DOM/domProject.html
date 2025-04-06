@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domProject</title>
+</head>
+<body>
+    <h3>Youtube subscribe Button</h3>
+    <button class="js-subscribe" 
+    onclick="subscribe()">Subscribe</button>
+    
+    <h2>Amazon Cart</h2>
+    <p>Amazon Shipping Calculator</p>
+    <p>if your cost <= $40 , ongkir = $10</p>
+    <p>if your cost > $40 , free ongkir</p>
+
+    <input placeholder="Pengeluaran dari pembelian" class="js-cost" onkeydown="hundleCostKeyDown(event)"> 
+    <!-- fungsi onkeydown itu untuk mendeteksi apakah user menekan enter atau tidak -->
+    <button onclick="CalculateCost()"
+    >Calculate</button>
+
+    <p class="updateCost"></p>
+
+    <script>
+        //menurut copilot
+        //jika disini kita belajar DOM (Document Object Model)
+        //1. DOM adalah object yang merepresentasikan html di dalam js, jadi kita bisa mengakses html di dalam js
+        //2. kombinasi js dan html togather
+        //3. document.querySelector() = mengambil element html yang kita inginkan
+        //4. innerHTML = isi html sedangkan innerText = isi text
+        //5. 3projek pakai dom
+        //6. event = onclick, onkeydown, onkeyup, onkeypress, onmouseover, onmouseout, onfocus, onblur, onchange, onsubmit
+
+        function subscribe() {
+            const buttonSubcribe = document.querySelector('.js-subscribe'); //mengambil element dengan class js-subscribe
+            //kita bisa menggunakan innerHTML / innerText untuk mengganti isi button
+            //innerHTML = isi html sedangkan innerText = isi text
+            //jadi jika didalam ada space, maka innerHtml dapat eror jika tidak sama dengan yang diinginkan
+            //jika kita menggunakan innerText, maka kita tidak perlu khawatir jika ada space di dalam text
+            
+            if (buttonSubcribe.innerHTML ==='Subscribe') {
+                buttonSubcribe.innerHTML = 'Subscribed';
+            }else {
+                buttonSubcribe.innerHTML = 'Subscribe';
+            }
+            
+            // if (buttonSubcribe.innerText ==='subscribe') {
+            //     buttonSubcribe.innerText = 'Subcribed';
+            // }else {
+            //     buttonSubcribe.innerHTML = 'subscribe';
+            // }
+
+            // subscribe tidak ada space => >subscribe</button>
+
+            //  subscribe ada spcae 
+            // ">
+            // subscribe</button> 
+        }
+
+        function CalculateCost() {
+            const inputElement = document.querySelector('.js-cost');
+            let cost = inputElement.value; //mengambil value dari input element, tetapi karena value berupa string , kita harus ubah menjadi number
+            //jadi kita harus convert ke dalam number agar bisa dioperasikan
+            cost = Number(cost); //mengubah string menjadi number
+            
+            if (cost <= 40) {
+                cost += 10; //menambahkan 10 ke dalam cost
+                console.log(cost); 
+            }else {
+                console.log(cost); 
+            }
+            document.querySelector('.updateCost').innerHTML = `Total Cost: $${cost.toFixed(2)}`; //mengganti isi updateCost dengan Total Cost: $ + cost
+        }
+
+        //fungsi ini untuk mendeteksi apakah user menekan enter atau tidak
+        //jika user menekan enter, maka panggil function CalculateCost
+        function hundleCostKeyDown(event){
+            if (event.key === 'Enter') {
+                CalculateCost(); //jika enter ditekan, maka panggil function CalculateCost
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <button>hello</button>
+    <button class="js-button">Second Button</button> 
+    <!-- menggunakan class agar lebih mudah dalam memilih element -->
+    <script>
+    //disini kita belajar DOM (Document Object Model)
+    //1. DOM adalah object yang merepresentasikan html di dalam js, jadi kita bisa mengakses html di dalam js
+    //2. kombinasi js dan html
+
+        console.log(document.querySelector('button')); //menampilkan button di console, jadi yang dieksekusi adalah button
+        console.log(document.querySelector('button').innerHTML); //menampilkan button di console, jadi yang dieksekusi adalah button
+        document.querySelector('button').innerHTML = 'changed'; //mengganti isi button dengan changed, jadi yang dieksekusi adalah isi button
+
+    //2.kombinasi js dan html togather
+        document.querySelector('.js-button');
+        // document.querySelector('.js-button').innerHTML = 'changed';
+        const buttonElement = document.querySelector('.js-button'); //mengambil element dengan class js-button
+        //menyimpan element class js-button ke dalam variabel buttonElement agar lebih mudah diakses
+        console.log(buttonElement); //menampilkan element class js-button di console, jadi yang dieksekusi adalah element class js-button
+
+
+        // document.title = 'Changed'; //mengganti title di html dengan changed
+        // console.log(document.title); //menampilkan title di console, jadi yang dieksekusi adalah title
+
+        // document.body.innerHTML = 'hello'; //mengganti isi body dengan hello
+        
+        // console.log(document.body); //menampilkan isi body di console, jadi yang dieksekusi adalah isi body
+        // console.log(typeof document.body.innerHTML);
+        
+        // console.log(document.body.innerHTML); //menampilkan isi body di console, jadi yang dieksekusi adalah isi body
+        // document.body.innerHTML = '<button>goodjob!</button>'; //mengganti isi body dengan hello, jadi yang dieksekusi adalah isi body
+    </script>
+    
+</body>
+</html>
