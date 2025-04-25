@@ -4,16 +4,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolean</title>
     <style>
-       
+       body {
+            font-family: Arial;
+            background-color: #000000;
+            color: white;
+        }
+        .title {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .move-icon {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+        .move-button:hover {
+            transition: 0.5s;
+            transform: scale(1.1);
+        }
+        
+        .move-button {
+            background-color: transparent;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 3px solid #fff;
+        }
     </style>
 </head>
 <body>
-    <p>Batu Kertas Gunting</p>
-    <button onclick="result('Batu')">Batu</button>
-    <button onclick="result('Kertas')">Kertas</button>
-    <button onclick="result('Gunting')">Gunting</button>
+    <p class="title">Batu Kertas Gunting</p>
+    <button class="move-button" onclick="result('Batu')" ><img src="/7. StylingCss/rock.png" class="move-icon"></button>
+    <button class="move-button" onclick="result('Kertas')"><img src="/7. StylingCss/kertas.png" class="move-icon" ></button>
+    <button class="move-button" onclick="result('Gunting')"><img src="/7. StylingCss/scirssor.png" class="move-icon" ></button>
     
-    <p class="js-score"></p>
+    <p class="-score"></p>
     <p class="js-result"></p>
     <p class="js-move"></p>
     
@@ -22,7 +49,7 @@
         score.lose = 0;
         score.draw = 0;
         localStorage.removeItem('score');
-    // ketiga, menghapus object yang berada di localstorage
+        // ketiga, menghapus object yang berada di localstorage
         updateScoreElement();
         alert('Score telah direset');
     ">Reset Score</button>
@@ -70,7 +97,7 @@
             if (computerMove === pilihan) {
                 result = 'Seri Boss!!';
             } else if (computerMove === 'Batu') {
-                if (pilihan === 'Kertas') {
+                if (jspilihan === 'Kertas') {
                     result = 'Kamu Menang';
                 } else {
                     result = 'Kamu Kalah';
@@ -107,14 +134,14 @@
         //pamggil update score element agar bisa diakses di dalam dom
             updateScoreElement();
 
-        //jadi Pertama setelah update score, kita 
+            //jadi Pertama setelah update score, kita 
             //membuat localstorage agar data dari history tidak ke hapus jika direfresh
             //localstorage hanya bisa string, jadi kita convert score object ke json string
             localStorage.setItem('score',JSON.stringify(score));
 
         //jadi setelah kita bikin js result dan move, alert ini tidak perlu lagi, bebas sih
-        //     alert(`Computer memilih ${computerMove}. ${result}
-        //     \nWins: ${score.win}, Losses: ${score.lose}, Draw ${score.draw}`);
+            // alert(`Computer memilih ${computerMove}. ${result}
+            // \nWins: ${score.win}, Losses: ${score.lose}, Draw ${score.draw}`);
         }
         
 

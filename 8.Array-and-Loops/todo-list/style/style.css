@@ -1,0 +1,51 @@
+body {
+ font-family: Arial;
+}
+
+/* .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px;
+} */
+
+.grid-input-js,
+.js-tampilkan-input {
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    column-gap: 10px;
+    row-gap: 10px; 
+    /* untuk memberi jarak antar baris */
+    align-items: center;
+}
+
+.grid-input-js {
+    margin-bottom: 10px;
+}
+
+.name-input,
+.duedate-input {
+    font-size: 15px;
+    padding: 6px;
+}
+
+.add-button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.delete-button {
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    cursor: pointer;
+    padding:10px 0; 
+    /* padding memberi jarak atas bawah didalam objek */
+}

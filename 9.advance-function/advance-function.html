@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>advance function</title>
+</head>
+<body>
+
+    <script>
+        //in js function are value
+        function greeting() {
+            console.log('Hello World!');
+        }
+        greeting(); // memanggil function greeting
+
+        const function1 = function greeting(){
+            console.log('Hello ');
+        };
+        console.log(function1); // function greeting
+        console.log(typeof function1);
+        function1(); // memanggil function greeting 
+
+        //this is methode, karena fungsi disimpan didalam object
+        const object1 = {
+            num: 2,
+            fun : function (){ //kita tidak buth nama fungsi
+                console.log('haloo3');
+            }
+        }
+        object1.fun(); // memanggil function greeting
+
+    //passing value into a function
+        function display(param) {
+            console.log(param); // memanggil function greeting
+        }
+        display('passing value into a function'); // memanggil function greeting
+        
+    //passing a function to another function
+        function run(paramater){
+            paramater();
+        }
+        //karena parameter berisi function, maka kita bisa memanggilnya
+        run(function () {
+            console.log('helloRUN')
+        });
+
+        //jadi ingat , di JAVASCRIPT function adalah , JADI SAMAKAN KAYAK VALUE CARA MEGLOLANYA
+    </script>
+</body>
+</html>

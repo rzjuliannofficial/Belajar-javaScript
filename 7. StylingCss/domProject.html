@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domProject</title>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        .button-subscribe {
+            border: none;
+            color: white;
+            background-color: rgb(0, 0, 0);
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px 15px; /* padding atas bawah, kiri kanan */
+            margin-bottom: 30px; /* space diluar element*/
+        }
+
+        .list-subscribe {
+            background-color: rgb(226, 224, 224);
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        .js-cost-input {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px; /* space diluar element*/
+        }
+
+        .js-button-calculate {
+            border : none;
+            background-color: green;
+            color : white;
+            padding :10px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>Youtube subscribe Button</h3>
+    <button class="js-subscribe button-subscribe" 
+    onclick="subscribe()">Subscribe</button>
+    
+    <h2>Amazon Cart</h2>
+    <p>Amazon Shipping Calculator</p>
+    <p>if your cost <= $40 , ongkir = $10</p>
+    <p>if your cost > $40 , free ongkir</p>
+
+    <input placeholder="Cost of order" class="js-cost-input" onkeydown="hundleCostKeyDown(event)"> 
+    <!-- fungsi onkeydown itu untuk mendeteksi apakah user menekan enter atau tidak -->
+    <button onclick="CalculateCost()" class="js-button-calculate"
+    >Calculate</button>
+
+    <p class="updateCost"></p>
+
+    <script>
+
+//disini kita akan belajar tentang styling css tetapi dalam js
+//1. kita bisa menggunakan class untuk styling css di dalam js
+
+
+        function subscribe() {
+            const buttonSubcribe = document.querySelector('.js-subscribe'); //mengambil element dengan class js-subscribe
+           
+//1. classlist-subscribe adalah class yang kita buat di dalam css, untuk styling css di dalam js
+
+            if (buttonSubcribe.innerHTML ==='Subscribe') {
+                buttonSubcribe.innerHTML = 'Subscribed';
+                buttonSubcribe.classList.add('list-subscribe'); //menambahkan class button-subscribe ke dalam buttonSubcribe
+            }else {
+                buttonSubcribe.innerHTML = 'Subscribe';
+                buttonSubcribe.classList.remove('list-subscribe'); //menghapus class button-subscribe ke dalam buttonSubcribe
+            }
+        }
+
+        function CalculateCost() {
+            const inputElement = document.querySelector('.js-cost-input');
+            let cost = inputElement.value; //mengambil value dari input element, tetapi karena value berupa string , kita harus ubah menjadi number
+            //jadi kita harus convert ke dalam number agar bisa dioperasikan
+            cost = Number(cost); //mengubah string menjadi number
+            
+            if (cost <= 40) {
+                cost += 10; //menambahkan 10 ke dalam cost
+                console.log(cost); 
+            }else {
+                console.log(cost); 
+            }
+            document.querySelector('.updateCost').innerHTML = `Total Cost: $${cost.toFixed(2)}`; //mengganti isi updateCost dengan Total Cost: $ + cost
+        }
+
+        //fungsi ini untuk mendeteksi apakah user menekan enter atau tidak
+        //jika user menekan enter, maka panggil function CalculateCost
+        function hundleCostKeyDown(event){
+            if (event.key === 'Enter') {
+                CalculateCost(); //jika enter ditekan, maka panggil function CalculateCost
+            }
+        }
+    </script>
+</body>
+</html>
