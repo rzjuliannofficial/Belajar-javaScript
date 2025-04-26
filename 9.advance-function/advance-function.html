@@ -46,6 +46,24 @@
         });
 
         //jadi ingat , di JAVASCRIPT function adalah , JADI SAMAKAN KAYAK VALUE CARA MEGLOLANYA
+
+    //function untuk setTimeout, jadi kita bisa memanggil  function setelah 1 detik
+        //anynchronous function/code, jadi next line tidak akan menunggu function ini selesai
+        //jadi jika nextline ada console.log, maka console.log ini akan muncul lebih dulu
+        setTimeout(function () {
+            console.log('hello setTimeout')
+            console.log('hello setTimeout2')
+        }, 5000); // 5 detik
+        //kelebihan setTimeout, kita bisa memanggil function setelah 3 detik/lebih/kurang tergantung kita setnya
+
+        console.log('nextLine')   //console.log ini akan muncul lebih dulu, sebelium setTimeout
+        
+        //setInterval sama dengan setTimeout, tapi ini akan terus berjalan setiap 2 detik
+        //jadi misal kita set 2 detik, maka setiap 2 detik akan muncul console.log ini
+        // // setInterval(function () {
+            //     console.log('hello setInterval')
+            // }, 2000); // 2 detik
+            console.log('nextLine')   //console.log ini akan muncul lebih dulu, sebelium setTimeout
     </script>
 </body>
 </html>

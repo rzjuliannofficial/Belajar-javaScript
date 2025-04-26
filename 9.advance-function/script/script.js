@@ -1,62 +1,4 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boolean</title>
-    <style>
-       body {
-            font-family: Arial;
-            background-color: #000000;
-            color: white;
-        }
-        .title {
-            font-size: 30px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        .move-icon {
-            width: 100px;
-            height: 100px;
-            cursor: pointer;
-        }
-        .move-button:hover {
-            transition: 0.5s;
-            transform: scale(1.1);
-        }
-        
-        .move-button {
-            background-color: transparent;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-right: 10px;
-            border: 3px solid #fff;
-        }
-    </style>
-</head>
-<body>
-    <p class="title">Batu Kertas Gunting</p>
-    <button class="move-button" onclick="result('Batu')" ><img src="/7. StylingCss/rock.png" class="move-icon"></button>
-    <button class="move-button" onclick="result('Kertas')"><img src="/7. StylingCss/kertas.png" class="move-icon" ></button>
-    <button class="move-button" onclick="result('Gunting')"><img src="/7. StylingCss/scirssor.png" class="move-icon" ></button>
-    
-    <p class="js-result"></p>
-    <p class="js-move"></p>
-    <p class="js-score"></p>
-    
-    <button onclick="
-        score.win = 0;
-        score.lose = 0;
-        score.draw = 0;
-        localStorage.removeItem('score');
-        // ketiga, menghapus object yang berada di localstorage
-        updateScoreElement();
-        alert('Score telah direset');
-    ">Reset Score</button>
-
-    <script>
-       
-    //kedua, kita masuk sini, untuk mengeluarkan score yang ada di localstorage
+//kedua, kita masuk sini, untuk mengeluarkan score yang ada di localstorage
         //membuat localstorage agar mengeluarkan value
         //karena score sdh di covert ke dalam json, kita convert lagi menjadi object agar bisa diakses
         //json parse adalah method yang digunakan untuk mengubah string JSON menjadi objek JavaScript
@@ -76,42 +18,68 @@
     //panggil update score agar bisa diakses di dalam dom
         updateScoreElement();
 
+        //membuat diluar fungsi agar bisa diakses yang lain
+        const image = {
+            Batu :  '<img src="img/rock.png" alt="Batu" width="100px" height="100px">',
+            Kertas :  '<img src="img/kertas.png" alt="Kertas" width="100px" height="100px">',
+            Gunting :  '<img src="img/scirssor.png" alt="Gunting" width="100px" height="100px">'
+        };
         function computerChoice() {
              //randomNumber adalah variabel yang menyimpan nilai random dari 0-1
             let randomNumber = Math.random();
             let computerChoice = '';
-            
+            let computerChoiceImage = '';
+
             if (randomNumber < 1/3) { //antara 0 - 0,33
                 computerChoice ='Batu';
+                computerChoiceImage = image.Batu;
             } else if (randomNumber < 2/3) { //antara 0,33 - 0,66
                 computerChoice = 'Kertas';
+                computerChoiceImage = image.Kertas;
             } else { //antara 0,66 - 1
                 computerChoice = 'Gunting';
+                computerChoiceImage = image.Gunting;
             }
-            return computerChoice;
+            return {
+                choice : computerChoice,
+                choiceImage : computerChoiceImage
+            };
+            
         }
 
-        function result(pilihan) {
-            const computerMove = computerChoice();
+        function result(pilihan) {//pilihan adalah parameter yang diambil dari func
+            
+            const computerMove = computerChoice(); //menyimpan value yang direturn
+            const computerMoveChoice = computerMove.choice; //menyimpan value yang direturn
+            const computerMoveImage = computerMove.choiceImage; //menyimpan value yang direturn
+            let pilihanImage = '';
+
             let result = '';
-            if (computerMove === pilihan) {
+            if (computerMoveChoice === pilihan) {
                 result = 'Seri Boss!!';
-            } else if (computerMove === 'Batu') {
-                if (jspilihan === 'Kertas') {
+                pilihanImage = computerMoveImage;
+            } else if (computerMoveChoice === 'Batu') {
+                if (pilihan === 'Kertas') {
+                    pilihanImage = image.Kertas;
                     result = 'Kamu Menang';
                 } else {
+                    pilihanImage = image.Gunting;
                     result = 'Kamu Kalah';
                 }
-            } else if (computerMove === 'Gunting') {
+            } else if (computerMoveChoice === 'Gunting') {
                 if (pilihan === 'Kertas') {
+                    pilihanImage = image.Kertas;
                     result = 'Kamu Kalah';
                 } else {
+                    pilihanImage = image.Batu;
                     result = 'Kamu Menang';
                 }
             } else {
                 if (pilihan === 'Batu') {
+                    pilihanImage = image.Batu;
                     result = 'Kamu Kalah';
                 } else {
+                    pilihanImage = image.Gunting;
                     result = 'Kamu Menang';
                 }
             }
@@ -120,8 +88,10 @@
             .innerHTML = result;
 
             document.querySelector('.js-move')
-            .innerHTML = `Computer memilih ${computerMove} dan kamu memilih ${pilihan}`;
+            .innerHTML = `Computer memilih ${computerMoveChoice} dan kamu memilih ${pilihan}`;
             
+            document.querySelector('.js-move-img')
+            .innerHTML = `you ${pilihanImage}${computerMoveImage} Computer`;
             //check update
             if (result === 'Kamu Menang') {
                 score.win += 1 ; 
@@ -151,7 +121,3 @@
             document.querySelector('.js-score')
             .innerHTML = `Wins: ${score.win}, Losses: ${score.lose}, Draw ${score.draw}`;
         }
-
-    </script>
-</body>
-</html>

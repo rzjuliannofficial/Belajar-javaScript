@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean setInterval</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <p class="title">Batu Kertas Gunting</p>
+    <button class="move-button" onclick="result('Batu')" ><img src="img/rock.png" class="move-icon"></button>
+    <button class="move-button" onclick="result('Kertas')"><img src="img/kertas.png" class="move-icon" ></button>
+    <button class="move-button" onclick="result('Gunting')"><img src="img/scirssor.png" class="move-icon" ></button>
+    
+    <p class="js-result"></p>
+    <p class="js-move"></p>
+    <p class="js-move-img"></p>
+    <p class="js-score"></p>
+    
+    <button onclick="
+        score.win = 0;
+        score.lose = 0;
+        score.draw = 0;
+        localStorage.removeItem('score');
+        // ketiga, menghapus object yang berada di localstorage
+        updateScoreElement();
+        alert('Score telah direset');
+    ">Reset Score</button>
+
+    <script src="script/script.js"></script>
+</body>
+</html>
