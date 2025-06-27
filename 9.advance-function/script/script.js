@@ -47,7 +47,24 @@
             
         }
 
-        function result(pilihan) {//pilihan adalah parameter yang diambil dari func
+        let isAutoPlay = false;
+        let intervalID;
+
+        function autoPlay() {
+            if (!isAutoPlay) {
+                intervalID = setInterval(function(){
+                const playerMove = computerChoice().choice;
+                playGame(playerMove);
+                }, 1000);
+                isAutoPlay = true;
+            } else {
+                clearInterval(intervalID);
+                isAutoPlay = false;
+            }
+        }
+
+
+        function playGame(pilihan) {//pilihan adalah parameter yang diambil dari func
             
             const computerMove = computerChoice(); //menyimpan value yang direturn
             const computerMoveChoice = computerMove.choice; //menyimpan value yang direturn
@@ -112,8 +129,16 @@
         //jadi setelah kita bikin js result dan move, alert ini tidak perlu lagi, bebas sih
             // alert(`Computer memilih ${computerMove}. ${result}
             // \nWins: ${score.win}, Losses: ${score.lose}, Draw ${score.draw}`);
-        }
         
+        }
+        function autoPlayButton() {
+            const buttonAutoPlay = document.querySelector('.auto-play-button');
+            if (buttonAutoPlay.innerHTML === 'Auto Play') {
+                buttonAutoPlay.innerHTML = 'Stop';
+            }else {
+                buttonAutoPlay.innerHTML = 'Auto Play';
+            } 
+        }
 
         function updateScoreElement() {
             //selanjutnya dalam dom kita ingin mengeluarkan score yang ada di localstorage

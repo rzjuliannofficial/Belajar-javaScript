@@ -7,9 +7,9 @@
 </head>
 <body>
     <p class="title">Batu Kertas Gunting</p>
-    <button class="move-button" onclick="result('Batu')" ><img src="img/rock.png" class="move-icon"></button>
-    <button class="move-button" onclick="result('Kertas')"><img src="img/kertas.png" class="move-icon" ></button>
-    <button class="move-button" onclick="result('Gunting')"><img src="img/scirssor.png" class="move-icon" ></button>
+    <button class="move-button" onclick="playGame('Batu')" ><img src="img/rock.png" class="move-icon"></button>
+    <button class="move-button" onclick="playGame('Kertas')"><img src="img/kertas.png" class="move-icon" ></button>
+    <button class="move-button" onclick="playGame('Gunting')"><img src="img/scirssor.png" class="move-icon" ></button>
     
     <p class="js-result"></p>
     <p class="js-move"></p>
@@ -23,9 +23,15 @@
         localStorage.removeItem('score');
         // ketiga, menghapus object yang berada di localstorage
         updateScoreElement();
-        alert('Score telah direset');
-    ">Reset Score</button>
+        alert('Score telah direset');"
+        class="reset-score-button"
+        >Reset Score</button>
 
-    <script src="script/script.js"></script>
+    <button class="auto-play-button" onclick="
+        autoPlay()
+        autoPlayButton()
+    ">Auto Play</button>
+    
+    <script src="/9.advance-function/script/script.js"></script>
 </body>
 </html>
