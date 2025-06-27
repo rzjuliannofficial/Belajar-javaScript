@@ -56,14 +56,50 @@
         }, 5000); // 5 detik
         //kelebihan setTimeout, kita bisa memanggil function setelah 3 detik/lebih/kurang tergantung kita setnya
 
-        console.log('nextLine')   //console.log ini akan muncul lebih dulu, sebelium setTimeout
+        console.log('nextLine');   //console.log ini akan muncul lebih dulu, sebelium setTimeout
         
         //setInterval sama dengan setTimeout, tapi ini akan terus berjalan setiap 2 detik
         //jadi misal kita set 2 detik, maka setiap 2 detik akan muncul console.log ini
         // // setInterval(function () {
             //     console.log('hello setInterval')
             // }, 2000); // 2 detik
-            console.log('nextLine')   //console.log ini akan muncul lebih dulu, sebelium setTimeout
+            console.log('nextLine');   //console.log ini akan muncul lebih dulu, sebelium setTimeout
+    
+
+        //loop through an array / forEACH
+        [
+            'make dinner',
+            'wash dishes',
+            'clean room'
+        ].forEach(function(value, index){
+            if (value === 'wash dishes') {
+                return; // jika value adalah 'wash dishes', maka akan mengembalikan, as same as kyk continue
+            }
+
+            console.log(index); // akan menampilkan index dari array
+            console.log(value); // akan menampilkan setiap value di array
+        });
+
+    //advance function PART 2
+        const regularFunction = function() {
+            console.log('hello regular function');;
+        };
+
+        const arrowFunction = () => {
+            console.log('hello arrow function');
+        };
+        //arrow function adalah function yang lebih singkat, jadi kita tidak perlu menulis function dan kurung kurawal
+        arrowFunction(); // memanggil function greeting
+    
+        //jadi kedua fungsi tersebut sama saja, hanya saja arrow function lebih singkat
+    
+        const oneParam = (param) => {
+            console.log(param + 1);
+        };
+        oneParam(2); // memanggil function
+
+        const oneLine = () => 2 + 3; // jika hanya satu baris, kita tidak perlu menulis kurung kurawal
+        console.log(oneLine()); // memanggil function
     </script>
 </body>
 </html>
