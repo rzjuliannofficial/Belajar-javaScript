@@ -6,8 +6,28 @@
     <title>advance function</title>
 </head>
 <body>
-
+    <button onclick="" class="js-button">
+        Click
+    </button>
     <script>
+    //addEventListener
+        //jadi kegunaannya untuk menambahkan event handler ke element
+        /*const buttonElement = document.querySelector('.js-button');
+
+        const eventListener = () => {
+            console.log('Click');
+        };
+
+        buttonElement.addEventListener('click' , eventListener);
+        
+        buttonElement.removeEventListener('click' , eventListener);
+
+        buttonElement.addEventListener('click',() => {
+            console.log('Click2');
+        });
+        */
+
+        /*
         //in js function are value
         function greeting() {
             console.log('Hello World!');
@@ -71,7 +91,9 @@
             'make dinner',
             'wash dishes',
             'clean room'
-        ].forEach(function(value, index){
+        // ].forEach(function(value, index){
+        ].forEach((value, index) => {
+        
             if (value === 'wash dishes') {
                 return; // jika value adalah 'wash dishes', maka akan mengembalikan, as same as kyk continue
             }
@@ -100,6 +122,46 @@
 
         const oneLine = () => 2 + 3; // jika hanya satu baris, kita tidak perlu menulis kurung kurawal
         console.log(oneLine()); // memanggil function
+    
+        const obcject2 = {
+            method: () => {
+                console.log('hello object2 method');
+            },
+
+            //method2 lebih mudah dibaca
+            method2() {
+                console.log('hello object2 method2');
+            }
+        };*/
+
+    //2 more array method .filter() and .map()
+    //.filter()
+        console.log([1, -3 , 5].filter((value, index) => {
+            if (value >= 0) {
+                return true; // jika value lebih besar dari 0, maka akan mengembalikan true
+            } else {
+                return false; // jika value kurang dari 0, maka akan mengembalikan false
+            }
+
+            return value >= 0; // cara singkatnya, kita bisa langsung mengembalikan nilai boolean
+            //jadi kode diatas untuk memfilter nilai array yang bernilai negatif
+
+            /*
+            return true;// jika true, maka value akan dimasukkan ke dalam array baru
+            //jika return false, maka value tidak akan dimasukkan ke dalam array baru
+            return false;
+            */
+        }));
+
+    //.map()
+        console.log([ 1, 1 , 3].map((value , index) => {
+            return value * 2; // akan mengembalikan array baru dengan nilai yang sudah dikalikan 2
+            //return 10; // akan mengembalikan array baru dengan nilai 10
+        }));
+
+        console.log([ 1, 1 , 3].map(value => value * 2)); // cara singkatnya, kita bisa langsung mengembalikan nilai
+        
+    
     </script>
 </body>
 </html>

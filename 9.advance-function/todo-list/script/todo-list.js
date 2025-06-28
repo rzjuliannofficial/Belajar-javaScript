@@ -1,6 +1,11 @@
 const myArrayTodolist = []; 
 //jadi setelah kita menambahkan data, maka myArrayTodolist akan berisi data yang kita masukkan DARI TAMPILKAN INPUT
 
+// document.querySelector('.js-add-todo-button')
+//     .addEventListener('click', () => {
+//         praktikum1()
+//     }); // menambahkan event listener pada tombol add
+
 function praktikum1(){
     
     const inputElement = document.querySelector('.js-name');
@@ -10,11 +15,13 @@ function praktikum1(){
     const duedate = dateInputElement.value; // mengambil value dari inputan tanggal
     
 
-    if (name !== '' || duedate !== '') { // jika nama atau tanggal kosong
+    if (name !== '' && duedate !== '') { // jika nama atau tanggal kosong
         myArrayTodolist.push({
             name: name, // menambahkan nama ke dalam array
             duedate: duedate // menambahkan tanggal ke dalam array
         });
+    } else {
+        alert('Nama dan tanggal tidak boleh kosong!'); // menampilkan alert jika nama atau tanggal kosong
     }
     console.log(myArrayTodolist);
     
@@ -37,7 +44,7 @@ function hundleAddButton1(event){ //ini menghandle jika kita menekan enter, akan
 function TampilkanInput() {
     let todoListHTML = ''; // inisialisasi variabel untuk menyimpan HTML
     
-    myArrayTodolist.forEach(function(dataObject, index) {
+    myArrayTodolist.forEach((dataObject, index) => {
         const {name, duedate} = dataObject; // destructuring untuk mengambil nama dan tanggal dari array
         const html = 
         `

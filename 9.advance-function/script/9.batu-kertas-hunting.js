@@ -50,9 +50,15 @@
         let isAutoPlay = false;
         let intervalID;
 
+        //arrow function
+        //const autoPlay = () => {
+        
+        //};
+
+        //function regular, lebih mudah dibaca
         function autoPlay() {
             if (!isAutoPlay) {
-                intervalID = setInterval(function(){
+                intervalID = setInterval(() =>{
                 const playerMove = computerChoice().choice;
                 playGame(playerMove);
                 }, 1000);
@@ -63,6 +69,30 @@
             }
         }
 
+    //new membuat addEventListener
+        document.querySelector('.js-rock-button')
+        .addEventListener('click', () => {
+            playGame('Batu');
+        });
+        document.querySelector('.js-paper-button')
+        .addEventListener('click', () => {
+            playGame('Kertas');
+        });
+        document.querySelector('.js-scirssor-button')
+        .addEventListener('click', () => {
+            playGame('Gunting');
+        });
+
+        //jadi akan play game sesuai inputan dari keyboard
+        document.body.addEventListener('keydown', (event) => {
+            if (event.key === 'b') {
+                playGame('Batu');
+            }else if (event.key === 'k') {
+                playGame('Kertas');
+            }else if (event.key === 'g') {
+                playGame('Gunting');
+            }
+        });
 
         function playGame(pilihan) {//pilihan adalah parameter yang diambil dari func
             

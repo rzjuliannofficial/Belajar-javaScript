@@ -7,10 +7,10 @@
 </head>
 <body>
     <p class="title">Batu Kertas Gunting</p>
-    <button class="move-button" onclick="playGame('Batu')" ><img src="img/rock.png" class="move-icon"></button>
-    <button class="move-button" onclick="playGame('Kertas')"><img src="img/kertas.png" class="move-icon" ></button>
-    <button class="move-button" onclick="playGame('Gunting')"><img src="img/scirssor.png" class="move-icon" ></button>
-    
+    <button class="move-button js-rock-button" ><img src="img/rock.png" class="move-icon"></button>
+    <button class="move-button js-paper-button" onclick="playGame('Kertas')"><img src="img/kertas.png" class="move-icon" ></button>
+    <button class="move-button js-scirssor-button" onclick="playGame('Gunting')"><img src="img/scirssor.png" class="move-icon" ></button>
+     
     <p class="js-result"></p>
     <p class="js-move"></p>
     <p class="js-move-img"></p>
@@ -32,6 +32,6 @@
         autoPlayButton()
     ">Auto Play</button>
     
-    <script src="/9.advance-function/script/script.js"></script>
+    <script src="/9.advance-function/script/9.batu-kertas-hunting.js"></script>
 </body>
 </html>
