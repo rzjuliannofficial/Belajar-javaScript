@@ -61,6 +61,7 @@ products.forEach((product) => {
     document.querySelector('.js-products-grid')
         .innerHTML = productsHTML;
 
+  // Add event listener to the "Add to Cart" buttons
     document.querySelectorAll('.js-add-to-cart')
       .forEach((button) => {
       button.addEventListener('click', () => {
@@ -74,6 +75,7 @@ products.forEach((product) => {
           }
         });
 
+        // Check if the product is already in the cart
         if (matchingItem) {
           matchingItem.quantity += 1;
         }else {
@@ -83,8 +85,18 @@ products.forEach((product) => {
           });
         }
 
+      // Update the cart quantity in the header
+        let cartQuantity = 0;
+
+        cart.forEach((item) => {
+          cartQuantity += item.quantity;
+        });
+
+        document.querySelector('.js-cart-quantity')
+          .innerHTML = cartQuantity;
         
-        console.log(cart);
+        // console.log(cartQuantity);
+        // console.log(cart);
       });
     });
 });
