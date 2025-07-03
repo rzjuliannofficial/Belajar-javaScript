@@ -26,7 +26,7 @@ products.forEach((product) => {
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-quantity-selector-${product.id}">
               <option value=1>1</option>
               <option value=2>2</option>
               <option value=3>3</option>
@@ -66,11 +66,15 @@ products.forEach((product) => {
       .forEach((button) => {
       button.addEventListener('click', () => {
         const productId = button.dataset.productId;
-
+      
+      // Ambil elemen dropdown berdasarkan productId
+        const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+        const keranjang = parseInt(quantitySelector.value, 10); // Ambil nilai yang dipilih dari dropdown
+      
       //add drop-down quantity to cart
-        const container = button.parentElement;
-        const select = container.querySelector('.product-quantity-container select');
-        const keranjang = parseInt(select.value);
+        // const container = button.parentElement;
+        // const select = container.querySelector('.product-quantity-container select');
+        // const keranjang = parseInt(select.value);
       //
 
         let matchingItem ;
@@ -101,8 +105,8 @@ products.forEach((product) => {
         document.querySelector('.js-cart-quantity')
           .innerHTML = cartQuantity;
         
-        // console.log(cartQuantity);
-        console.log(cart);
+        console.log(quantitySelector);
+        // console.log(quantity);
       });
     });
 });
