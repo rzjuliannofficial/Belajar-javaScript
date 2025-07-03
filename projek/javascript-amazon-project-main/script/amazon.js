@@ -27,16 +27,16 @@ products.forEach((product) => {
 
           <div class="product-quantity-container">
             <select>
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+              <option value=6>6</option>
+              <option value=7>7</option>
+              <option value=8>8</option>
+              <option value=9>9</option>
+              <option value=10>10</option>
             </select>
           </div>
 
@@ -67,6 +67,12 @@ products.forEach((product) => {
       button.addEventListener('click', () => {
         const productId = button.dataset.productId;
 
+      //add drop-down quantity to cart
+        const container = button.parentElement;
+        const select = container.querySelector('.product-quantity-container select');
+        const keranjang = parseInt(select.value);
+      //
+
         let matchingItem ;
 
         cart.forEach((item) => {
@@ -77,11 +83,11 @@ products.forEach((product) => {
 
         // Check if the product is already in the cart
         if (matchingItem) {
-          matchingItem.quantity += 1;
+          matchingItem.quantity += keranjang;
         }else {
           cart.push({
             productId : productId,
-            quantity : 1
+            quantity : keranjang
           });
         }
 
@@ -96,7 +102,7 @@ products.forEach((product) => {
           .innerHTML = cartQuantity;
         
         // console.log(cartQuantity);
-        // console.log(cart);
+        console.log(cart);
       });
     });
 });
