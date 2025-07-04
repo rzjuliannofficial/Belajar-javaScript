@@ -1,3 +1,5 @@
+import {cart} from '../data/cart.js';
+
 let productsHTML ='';
 
 products.forEach((product) => {
@@ -42,15 +44,15 @@ products.forEach((product) => {
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart" 
+            data-product-id="${product.id}">
             <img src="images/icons/checkmark.png">
             Added
           </div>
 
           <button class="add-to-cart-button 
           button-primary js-add-to-cart"
-          data-product-id = "${product.id}"
-          >
+          data-product-id = "${product.id}">
             Add to Cart
           </button>
         </div>
@@ -97,7 +99,7 @@ products.forEach((product) => {
 
       // Update the cart quantity in the header
         let cartQuantity = 0;
-
+       
         cart.forEach((item) => {
           cartQuantity += item.quantity;
         });
@@ -105,8 +107,25 @@ products.forEach((product) => {
         document.querySelector('.js-cart-quantity')
           .innerHTML = cartQuantity;
         
-        console.log(quantitySelector);
+        //console.log(quantitySelector);
         // console.log(quantity);
+
+
+    //mengubah opacity elemen "Added to Cart"
+      const addedToCartElement = document.querySelector(`.added-to-cart[data-product-id="${productId}"]`);
+      //dan menghilang setelah 5 detik
+      addedToCartElement.style.opacity = "1"; // Ubah opacity menjadi 100%
+      setTimeout(() => {
+        addedToCartElement.style.opacity = "0"; // Ubah opacity menjadi 0%
+      }, 5000);
+
+    //jika tidak menambhankan data-produk-id , bisa menggunakan cara ini
+      // const productContainer = button.closest('.product-container'); // Cari container produk terkait
+      // const addedToCartElement = productContainer.querySelector('.added-to-cart'); // Ambil elemen "Added to Cart" di dalam container
+      // addedToCartElement.style.opacity = "1"; // Ubah opacity menjadi 100%
+      // console.log(addedToCartElement.style);
+      
+      console.log(cart);
       });
     });
 });
