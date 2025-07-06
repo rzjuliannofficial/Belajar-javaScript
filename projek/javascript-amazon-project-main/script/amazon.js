@@ -1,6 +1,11 @@
 import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
+// juga bisa mengguanakna ini
+//import * as Cart from './Cart.js';
+//nanti manggilnya seperti ini : 
+// Cart.addToCart(productId); && Cart.cart
+
 let productsHTML ='';
 
 products.forEach((product) => {
