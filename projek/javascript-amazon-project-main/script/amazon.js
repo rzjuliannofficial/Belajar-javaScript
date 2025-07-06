@@ -91,8 +91,23 @@ products.forEach((product) => {
           addToCart(productId);
           updateCartQuantity();
         
+        //mengubah opacity elemen "Added to Cart"
+          const addedToCartElement = document.querySelector(`.added-to-cart[data-product-id="${productId}"]`);
+          //dan menghilang setelah 5 detik
+          addedToCartElement.style.opacity = "1"; // Ubah opacity menjadi 100%
+          setTimeout(() => {
+            addedToCartElement.style.opacity = "0"; // Ubah opacity menjadi 0%
+          }, 5000);
           //console.log(quantitySelector);
           // console.log(quantity);
+
+          //jika tidak menambhankan data-produk-id , bisa menggunakan cara ini
+          // const productContainer = button.closest('.product-container'); // Cari container produk terkait
+          // const addedToCartElement = productContainer.querySelector('.added-to-cart'); // Ambil elemen "Added to Cart" di dalam container
+          // addedToCartElement.style.opacity = "1"; // Ubah opacity menjadi 100%
+          // console.log(addedToCartElement.style);
+          
+          console.log(cart);
         });
       });
 });

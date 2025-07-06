@@ -1,8 +1,15 @@
-export const cart = [];
+export const cart = [{
+    productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+    quantity: 2,
+},{
+    productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+    quantity: 1,
+}];
 
 
 //fungsi addToCart untuk menambahkan produk ke keranjang belanja
 export function addToCart(productId) {
+    
     // Ambil elemen dropdown berdasarkan productId
     const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
     const keranjang = parseInt(quantitySelector.value, 10); // Ambil nilai yang dipilih dari dropdown
@@ -30,20 +37,4 @@ export function addToCart(productId) {
         quantity : keranjang
       });
     }
-
-    //mengubah opacity elemen "Added to Cart"
-    const addedToCartElement = document.querySelector(`.added-to-cart[data-product-id="${productId}"]`);
-    //dan menghilang setelah 5 detik
-    addedToCartElement.style.opacity = "1"; // Ubah opacity menjadi 100%
-    setTimeout(() => {
-      addedToCartElement.style.opacity = "0"; // Ubah opacity menjadi 0%
-    }, 5000);
-
-  //jika tidak menambhankan data-produk-id , bisa menggunakan cara ini
-    // const productContainer = button.closest('.product-container'); // Cari container produk terkait
-    // const addedToCartElement = productContainer.querySelector('.added-to-cart'); // Ambil elemen "Added to Cart" di dalam container
-    // addedToCartElement.style.opacity = "1"; // Ubah opacity menjadi 100%
-    // console.log(addedToCartElement.style);
-    
-    console.log(cart);
 }
