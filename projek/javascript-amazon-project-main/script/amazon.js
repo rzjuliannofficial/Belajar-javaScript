@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let productsHTML ='';
@@ -59,74 +59,35 @@ products.forEach((product) => {
         </div>
     `;
 
-    // console.log(productsHTML);
-
     document.querySelector('.js-products-grid')
         .innerHTML = productsHTML;
 
-  // Add event listener to the "Add to Cart" buttons
-    document.querySelectorAll('.js-add-to-cart')
-      .forEach((button) => {
-      button.addEventListener('click', () => {
-        const productId = button.dataset.productId;
+
+  //fungsi updateCartQuantity untuk memperbarui jumlah keranjang di header
+    function updateCartQuantity() {
+    // Update the cart quantity in the header
+      let cartQuantity = 0;
       
-      // Ambil elemen dropdown berdasarkan productId
-        const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-        const keranjang = parseInt(quantitySelector.value, 10); // Ambil nilai yang dipilih dari dropdown
-      
-      //add drop-down quantity to cart
-        // const container = button.parentElement;
-        // const select = container.querySelector('.product-quantity-container select');
-        // const keranjang = parseInt(select.value);
-      //
-
-        let matchingItem ;
-
-        cart.forEach((item) => {
-          if (productId === item.productId) {
-            matchingItem = item;
-          }
-        });
-
-        // Check if the product is already in the cart
-        if (matchingItem) {
-          matchingItem.quantity += keranjang;
-        }else {
-          cart.push({
-            productId : productId,
-            quantity : keranjang
-          });
-        }
-
-      // Update the cart quantity in the header
-        let cartQuantity = 0;
-       
-        cart.forEach((item) => {
-          cartQuantity += item.quantity;
-        });
-
-        document.querySelector('.js-cart-quantity')
-          .innerHTML = cartQuantity;
-        
-        //console.log(quantitySelector);
-        // console.log(quantity);
-
-
-    //mengubah opacity elemen "Added to Cart"
-      const addedToCartElement = document.querySelector(`.added-to-cart[data-product-id="${productId}"]`);
-      //dan menghilang setelah 5 detik
-      addedToCartElement.style.opacity = "1"; // Ubah opacity menjadi 100%
-      setTimeout(() => {
-        addedToCartElement.style.opacity = "0"; // Ubah opacity menjadi 0%
-      }, 5000);
-
-    //jika tidak menambhankan data-produk-id , bisa menggunakan cara ini
-      // const productContainer = button.closest('.product-container'); // Cari container produk terkait
-      // const addedToCartElement = productContainer.querySelector('.added-to-cart'); // Ambil elemen "Added to Cart" di dalam container
-      // addedToCartElement.style.opacity = "1"; // Ubah opacity menjadi 100%
-      // console.log(addedToCartElement.style);
-      
-      console.log(cart);
+      cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
       });
-    });
+
+      document.querySelector('.js-cart-quantity')
+        .innerHTML = cartQuantity;
+          
+    }
+    
+    // Add event listener to the "Add to Cart" buttons
+      document.querySelectorAll('.js-add-to-cart')
+        .forEach((button) => {
+        button.addEventListener('click', () => {
+          const productId = button.dataset.productId;
+        
+          addToCart(productId);
+          updateCartQuantity();
+        
+          //console.log(quantitySelector);
+          // console.log(quantity);
+        });
+      });
 });
