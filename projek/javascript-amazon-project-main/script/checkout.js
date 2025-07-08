@@ -5,7 +5,7 @@ import {formatCurrency} from './utils/money.js';
 let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
-
+    
     const productId = cartItem.productId;
 
     let matchingProduct;
@@ -15,9 +15,10 @@ cart.forEach((cartItem) => {
             matchingProduct = product;
         }
     });
-    console.log(matchingProduct.priceCents);
+    // console.log(matchingProduct.priceCents);
     // console.log(matchingProduct);
 
+    updatecheckOutQuantity();
 
     cartSummaryHTML += `
     <div class="cart-item-container
@@ -101,6 +102,8 @@ cart.forEach((cartItem) => {
     `
 });
 
+// updatecheckoutQuantity();
+
 document.querySelector('.js-order-summary')
     .innerHTML = cartSummaryHTML;
 
@@ -113,5 +116,21 @@ document.querySelectorAll('.js-delete-link')
         const container = document.querySelector(`.js-cart-item-container-${selectProductId}`);
 
         container.remove();
+        updatecheckOutQuantity();
         });
     });
+
+  //fungsi updatecheckOutQuantity untuk memperbarui jumlah keranjang di header
+  function updatecheckOutQuantity(cartItem) {
+    // Update the cart quantity in the header
+      let checkOutQuantity = 0;
+      
+      cart.forEach((cartItem) => {
+        checkOutQuantity += cartItem.quantity;
+      });
+
+      document.querySelector('.js-checkOut-Quantity')
+        .innerHTML = checkOutQuantity + ' items';
+
+        console.log(checkOutQuantity);
+}
