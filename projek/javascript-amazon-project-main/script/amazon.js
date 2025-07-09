@@ -68,6 +68,8 @@ products.forEach((product) => {
     document.querySelector('.js-products-grid')
         .innerHTML = productsHTML;
 
+    
+    updateCartQuantity();
 
   //fungsi updateCartQuantity untuk memperbarui jumlah keranjang di header
     function updateCartQuantity() {
@@ -80,7 +82,7 @@ products.forEach((product) => {
 
       document.querySelector('.js-cart-quantity')
         .innerHTML = cartQuantity;
-          
+        console.log(cartQuantity);
     }
     
     // Add event listener to the "Add to Cart" buttons

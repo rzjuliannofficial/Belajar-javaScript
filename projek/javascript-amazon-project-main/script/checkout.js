@@ -42,7 +42,8 @@ cart.forEach((cartItem) => {
                 <span>
                 Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                 </span>
-                <span class="update-quantity-link link-primary">
+                <span class="update-quantity-link link-primary 
+                js-update-link">
                 Update
                 </span>
                 <span class="delete-quantity-link link-primary 
@@ -121,7 +122,7 @@ document.querySelectorAll('.js-delete-link')
     });
 
   //fungsi updatecheckOutQuantity untuk memperbarui jumlah keranjang di header
-  function updatecheckOutQuantity(cartItem) {
+  function updatecheckOutQuantity() {
     // Update the cart quantity in the header
       let checkOutQuantity = 0;
       
