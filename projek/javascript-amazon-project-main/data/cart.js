@@ -55,6 +55,7 @@ export function addToCart(productId) {
 export function removeFromCart(productId){
   const newCart = [];
 
+  //agar tidak diremove semua
   cart.forEach((cartItem) => {
     if (cartItem.productId !== productId) {
       newCart.push(cartItem);
@@ -64,4 +65,36 @@ export function removeFromCart(productId){
   cart = newCart;
 
   saveToStorage();
+}
+
+export function updateFromCart(productId, link){
+  
+  cart.forEach((cartItem) => {
+    if (cartItem.productId == productId) {    
+      
+      const quantityLabel = link.closest('.product-quantity').querySelector('.js-quantity-label');
+
+      if (link.innerHTML.trim() === 'Update') {
+        link.innerHTML = 'Save';
+        quantityLabel.innerHTML = `<input class="edit-quantity js-edit-quantity" value="${cartItem.quantity}" min="1">`;
+        // document.querySelector('js-quantity-label')
+        //   .outerHTML = `<input class="edit-quantity js-edit-quantity" type="number" value="${cartItem.quantity}" min="1">`
+        console.log(productId);
+      }else {
+        link.innerHTML = 'Update';
+        const editQuantityInput = link.closest('.product-quantity').querySelector('.js-edit-quantity');
+        const newQuantity = parseInt(editQuantityInput.value, 10);
+
+         // Perbarui quantity di keranjang
+         cartItem.quantity = newQuantity;
+
+         // Ganti input kembali menjadi teks Quantity
+         editQuantityInput.outerHTML = `<span class="quantity-label js-quantity-label">${newQuantity}</span>`;
+
+         saveToStorage();
+      }
+    }
+  });
+  //trim() menghapus spasi tambahan di awal dan akhir teks, 
+  // sehingga kondisi if dievaluasi dengan benar.
 }

@@ -1,4 +1,4 @@
-import {cart, removeFromCart} from '../data/cart.js';
+import {cart, removeFromCart, updateFromCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 
@@ -40,10 +40,11 @@ cart.forEach((cartItem) => {
             </div>
             <div class="product-quantity">
                 <span>
-                Quantity: <span class="quantity-label">${cartItem.quantity}</span>
+                Quantity: <span class="quantity-label js-quantity-label" >${cartItem.quantity}</span>
                 </span>
                 <span class="update-quantity-link link-primary 
-                js-update-link">
+                js-update-link"
+                data-product-id="${matchingProduct.id}">
                 Update
                 </span>
                 <span class="delete-quantity-link link-primary 
@@ -103,23 +104,36 @@ cart.forEach((cartItem) => {
     `
 });
 
-// updatecheckoutQuantity();
 
 document.querySelector('.js-order-summary')
     .innerHTML = cartSummaryHTML;
 
-document.querySelectorAll('.js-delete-link')
+addEventListener();
+
+function addEventListener() {
+    document.querySelectorAll('.js-delete-link')
     .forEach((link) => {
         link.addEventListener('click', () => {
             const selectProductId = link.dataset.productId;
             removeFromCart(selectProductId);
 
         const container = document.querySelector(`.js-cart-item-container-${selectProductId}`);
-
         container.remove();
         updatecheckOutQuantity();
         });
     });
+
+
+    document.querySelectorAll('.js-update-link')
+    .forEach((link) => {
+        link.addEventListener('click', () => {
+            const selectProductId = link.dataset.productId;
+            updateFromCart(selectProductId, link);
+            console.log(selectProductId);
+            updatecheckOutQuantity()
+        });
+    });   
+}
 
   //fungsi updatecheckOutQuantity untuk memperbarui jumlah keranjang di header
   function updatecheckOutQuantity() {
