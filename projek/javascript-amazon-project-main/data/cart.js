@@ -100,4 +100,20 @@ export function updateFromCart(productId, link){
   });
   //trim() menghapus spasi tambahan di awal dan akhir teks, 
   // sehingga kondisi if dievaluasi dengan benar.
+};
+
+export function updateDeliveryOption(productId , deliveryOptionId) {
+  let matchingItem ;
+
+  cart.forEach((cartItem) => {
+    if (productId === cartItem.productId) {
+      matchingItem = cartItem;
+    }
+  });
+  
+  matchingItem.deliveryOptionId = deliveryOptionId;
+  console.log(matchingItem);
+  console.log(deliveryOptionId);
+  
+  saveToStorage();
 }

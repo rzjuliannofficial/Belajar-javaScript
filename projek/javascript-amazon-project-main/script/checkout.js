@@ -1,4 +1,4 @@
-import {cart, removeFromCart, updateFromCart} from '../data/cart.js';
+import {cart, removeFromCart, updateFromCart, updateDeliveryOption} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 import {deliveryOptions} from '../data/deliveryOption.js';
@@ -117,7 +117,9 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
         html += `
-        <div class="delivery-option">
+        <div class="delivery-option js-delivery-option"
+        data-product-id="${matchingProduct.id}"
+        data-delivery-option-id="${deliveryOption.id}">
             <input type="radio"
             ${isChecked ? 'checked' : ''}  
             class="delivery-option-input"
@@ -168,7 +170,7 @@ function addEventListener() {
 }
 
   //fungsi updatecheckOutQuantity untuk memperbarui jumlah keranjang di header
-  function updatecheckOutQuantity() {
+function updatecheckOutQuantity() {
     // Update the cart quantity in the header
       let checkOutQuantity = 0;
       
@@ -181,3 +183,14 @@ function addEventListener() {
 
         console.log(checkOutQuantity);
 }
+
+document.querySelectorAll('.js-delivery-option')
+    .forEach((element) => {
+        element.addEventListener('click', () => {
+            // const productId = element.dataset.productId;
+            // const deliveryOptionId = element.dataset.deliveryOptionId;
+            //shortcut
+            const {productId, deliveryOptionId} = element.dataset;
+            updateDeliveryOption(productId , deliveryOptionId);
+        });
+    });
